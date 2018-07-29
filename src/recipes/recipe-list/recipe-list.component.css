@@ -1,0 +1,85 @@
+
+
+.flex-column-container{
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start; 
+}
+
+.flex-item {
+    flex-grow: 1;
+    flex-shrink: 1; 
+    align-self: center;
+    
+}
+.textAlignCenter{
+text-align: center;
+}
+
+.text-block{
+	font-size: 18px ;
+	font-family: Arial, Helvetica, sans-serif;	
+}
+.height30pc{
+height: 30%;
+}
+.height70pc{
+height: 70%;
+}
+.lightGreyBG{
+background-color:lightgrey;
+}
+.darkGreyBG{
+background-color:#55798a;
+}
+
+ul{
+list-style: none;
+list-style-type: none;
+}
+a{
+text-decoration: none;
+}
+
+.scroll-box{
+overflow-y: scroll;
+height:100%
+}
+
+.recipe-item li{
+ cursor:pointer;
+ height:100px;
+ display: flex;
+ align-items: center;
+ border-bottom-style: solid;
+ border-bottom-width: 2px;
+ border-bottom-color:white;
+}
+.whiteTextColor{
+color:white;
+}
+.width20pc{
+ width:20%;
+}
+.width40pc{
+ width:40%;
+}
+.width60pc{
+ width:60%;
+}
+.marginLeft5pc{
+margin-left:5%;
+}
+.antiquewhiteBG
+{
+    background-color: antiquewhite;
+}
+.lightBlueBG
+{
+    background-color: #4184a5;
+}
+
+.paleBlackTextColor
+{
+color:#000;
+}

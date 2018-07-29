@@ -1,0 +1,105 @@
+
+.flex-row-container{
+    display: flex;
+    flex-direction: row;
+    justify-content:flex-start; 
+}
+
+.flex-column-container{
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start; 
+}
+
+.flex-item {
+    flex-grow: 1;
+    flex-shrink: 1; 
+    align-self: center;
+    
+}
+.textAlignCenter{
+text-align: center;
+}
+
+.text-block{
+	font-size: 16px ;
+	font-family: Arial, Helvetica, sans-serif;	
+}
+.height30pc{
+height: 30%;
+}
+.height70pc{
+height: 70%;
+}
+.height94pc{
+height: 94%;
+}
+.lightGreyBG{
+background-color:lightgrey;
+}
+.darkGreyBG{
+background-color:#55798a;
+}
+
+ul{
+list-style: none;
+list-style-type: none;
+}
+a{
+text-decoration: none;
+}
+.whiteTextColor{
+color:white;
+}
+.width40pc{
+ width:40%;
+}
+.width60pc{
+ width:60%;
+}
+
+.width100pc{
+    width:100%;
+}
+
+.marginLeft5pc{
+margin-left:5%;
+}
+.add-to-cart{
+    height: 40px;
+    width: 60px;
+    background-color: #337ab7;
+    border-color: #2e6da4;
+    border-radius: 5px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.height100pc{
+    height: 100%;
+}
+
+.height55pc{
+    height: 55%;
+}
+
+.height45pc{
+    height: 45%;
+}
+
+.height80pc{
+    height: 80%;
+}
+
+.height20pc{
+    height: 20%;
+}
+
+.overflow-hidden{
+    overflow: hidden;
+}
+
+.no-margin{
+    margin: 0;
+}
+
