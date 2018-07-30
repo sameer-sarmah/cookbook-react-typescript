@@ -1,22 +1,23 @@
-import { Component } from 'react';
 import * as React from 'react';
+import { Component } from 'react';
 import { Recipe } from '../../model/recipe';
-import { CartService } from '../../services/cart-service.service';
-import { RecipeService } from '../../services/recipe.service';
+import { CartStore } from '../../store/CartStore';
+import { RecipeStore } from '../../store/RecipeStore';
 import './recipe-detail.component.css';
 
-interface IRecipeDetailState {
-    selectedRecipe: Recipe ;
-}
 
 interface IRecipeDetailProp {
     selectedRecipe: Recipe;
+    RecipeStore?: RecipeStore;
+    CartStore?: CartStore;
     match?: any;
+    addToCart: Function;
+    setSelectedRecipe: Function;
+    getRecipe: Function;
 }
 
-export class RecipeDetail extends Component<IRecipeDetailProp, IRecipeDetailState> {
-    public recipeSvc = new RecipeService();
-    public state: IRecipeDetailState ;
+export class RecipeDetail extends Component<IRecipeDetailProp> {
+
 
     public createRow(listItem: string, index: number) {
         const rows = (<li key={index}>{listItem}</li>);
@@ -28,30 +29,25 @@ export class RecipeDetail extends Component<IRecipeDetailProp, IRecipeDetailStat
     }
 
     public componentDidUpdate(prevProps: any, prevState: any) {
-         let recipeID;
-         if (!!this.props.match && !!this.props.match.params.id) {
-             recipeID = this.props.match.params.id;
-         }
-         const selectedRecipe: Recipe = this.recipeSvc.getRecipe(recipeID);
-         if (!!recipeID && (!prevState || recipeID !== prevState.selectedRecipe.recipe_id)) {
-         this.setState({selectedRecipe});
-         }
+        let recipeID;
+        if (!!this.props.match && !!this.props.match.params.id) {
+            recipeID = this.props.match.params.id;
+        }
+        const selectedRecipe = this.props.getRecipe.call(this.props.RecipeStore, recipeID);
+        if (!!recipeID && recipeID !== prevProps.selectedRecipe.recipe_id) {
+        this.props.setSelectedRecipe.call(this.props.RecipeStore, selectedRecipe);
+        }
     }
 
-    public addToCart() {
-        if (!!this.state.selectedRecipe) {
-          CartService.addToCart(this.state.selectedRecipe);
-        }
-      }
 
     public render() {
-        if (!this.state || !this.state.selectedRecipe || this.state.selectedRecipe === null) {
+        if (!this.props || !this.props.selectedRecipe || this.props.selectedRecipe === null) {
             return (<div/>);
         } else {
-        const image_url = this.state.selectedRecipe['image_url'];
-        const title = this.state.selectedRecipe['title'];
-        const ingredients: string[] = this.state.selectedRecipe['ingredients'];
-        const directions: string[] = this.state.selectedRecipe['directions'];
+        const image_url = this.props.selectedRecipe['image_url'];
+        const title = this.props.selectedRecipe['title'];
+        const ingredients: string[] = this.props.selectedRecipe['ingredients'];
+        const directions: string[] = this.props.selectedRecipe['directions'];
         const table = (
             <div className='height100pc width100pc'>
                 <div className='flex-column-container height100pc'>
@@ -64,7 +60,7 @@ export class RecipeDetail extends Component<IRecipeDetailProp, IRecipeDetailStat
                         </div>
                         <div className='flex-item '>
                             <button type='button' className='add-to-cart'
-                            onClick={this.addToCart.bind(this)}>Add</button>
+                            onClick={this.props.addToCart.bind(this.props.CartStore, this.props.selectedRecipe)}>Add</button>
                         </div>
                     </div>
 

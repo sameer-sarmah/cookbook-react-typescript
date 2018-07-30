@@ -13,7 +13,7 @@ export class RecipeList extends Component <IRecipeListProp, {}> {
 
     public createRow(recipeItem: Recipe
     ) {
-        const rows = (<li key={recipeItem.recipe_id} onClick={this.listItemClicked.bind(this, recipeItem)}>{recipeItem.title}</li>);
+        const rows = (<li key={recipeItem.recipe_id} onClick={this.listItemClicked.bind(this, recipeItem)}>{recipeItem['title']}</li>);
         return rows;
     }
 

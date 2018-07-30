@@ -6,13 +6,16 @@ import HeaderComponent from './header/header.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { RecipeComponent } from './recipes/recipes.component';
 import { ShoppingListComponent } from './shopping-cart/shopping-list.component';
+import { Provider } from 'mobx-react';
+import RecipeStore from './store/RecipeStore';
+import CartStore from './store/CartStore';
 
 class App extends Component {
 
  public render() {
     return (
 
-
+<Provider RecipeStore={RecipeStore} CartStore={CartStore}>
       <BrowserRouter >
         <div className='App'>
           <HeaderComponent  />
@@ -26,7 +29,7 @@ class App extends Component {
           </div>
 
       </BrowserRouter>
-
+ </Provider>
     );
   }
 }
